@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ededed"
+    android:background="#303333"
     tools:context=".AddItemActivity">
 
     <EditText
@@ -13,9 +13,12 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="150dp"
         android:focusedByDefault="true"
-        android:hint="Enter new task" />
+        android:hint="Enter new text"
+        android:textColor="#ededed"
+        android:textColorHint="#ededed"
+        android:textSize="25sp" />
 
     <Button
         android:id="@+id/btn_save"
@@ -25,6 +28,9 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_margin="10dp"
-        android:text="Save" />
+        android:background="#4A4C4C"
+        android:text="✔️ Save"
+        android:textColor="#ededed"
+        android:textSize="20sp" />
 
 </RelativeLayout>

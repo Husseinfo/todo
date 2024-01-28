@@ -8,7 +8,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
-import android.widget.ImageButton;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -23,7 +23,7 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ImageButton addFab = findViewById(R.id.fab_add);
+        Button addFab = findViewById(R.id.fab_add);
         addFab.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, AddItemActivity.class)));
 
         ListView listView = findViewById(R.id.lv_items);
@@ -34,13 +34,13 @@ public class MainActivity extends Activity {
         listView.setOnItemClickListener((parent, view, position, id) -> {
             ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
             clipboard.setPrimaryClip(ClipData.newPlainText("task", adapter.getItem(position)));
-            Toast.makeText(this, "Copied", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Copied ✅", Toast.LENGTH_SHORT).show();
         });
 
         listView.setOnItemLongClickListener((parent, view, position, id) -> {
             new AlertDialog.Builder(this)
-                    .setTitle("Delete?")
-                    .setPositiveButton("Delete", (dialog, which) -> {
+                    .setTitle("❌ Delete?")
+                    .setPositiveButton("❌ Delete", (dialog, which) -> {
                         Helper.saveItem(this, adapter.getItem(position), true);
                         adapter.clear();
                         adapter.addAll(Helper.getItems(this));

@@ -11,15 +11,12 @@ public class Helper {
     public static void saveItem(Context context, String item, boolean delete) {
         SharedPreferences sharedPref = context.getSharedPreferences(
                 context.getPackageName(), Context.MODE_PRIVATE);
-        Set<String> items = sharedPref.getStringSet("items", new HashSet<>());
-        Set<String> newItems = new HashSet<>(items);
+        Set<String> items = new HashSet<>(sharedPref.getStringSet("items", new HashSet<>()));
         if (delete)
-            newItems.remove(item);
+            items.remove(item);
         else
-            newItems.add(item);
-        SharedPreferences.Editor editor = sharedPref.edit();
-        editor.putStringSet("items", newItems);
-        editor.apply();
+            items.add(item);
+        sharedPref.edit().putStringSet("items", items).apply();
     }
 
     public static Set<String> getItems(Context context) {
