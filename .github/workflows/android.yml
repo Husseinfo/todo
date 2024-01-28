@@ -33,7 +33,7 @@ jobs:
         uses: actions/upload-artifact@v1
         with:
           name: apk
-          path: app/build/outputs/apk/release/app-release.apk
+          path: app/release/app-release.apk
   release:
     name: Release APK
     needs: apk
