@@ -13,14 +13,20 @@ android {
         versionName "1.1"
     }
 
-    buildTypes {
+    signingConfigs {
         release {
-            minifyEnabled true
-            shrinkResources true
             storeFile file("../keystore")
             storePassword "$System.env.SIGNING_STORE_PASSWORD"
             keyAlias "$System.env.SIGNING_KEY_ALIAS"
             keyPassword "$System.env.SIGNING_KEY_PASSWORD"
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            shrinkResources true
+            signingConfig signingConfigs.release
         }
     }
     compileOptions {
